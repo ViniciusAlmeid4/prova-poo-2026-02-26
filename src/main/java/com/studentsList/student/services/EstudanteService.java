@@ -14,11 +14,11 @@ public class EstudanteService {
 //    private EstudanteRepository estudanteRepository;
 
     private final EstudanteRepository estudanteRepository;
-    
-    private EstudanteService(EstudanteRepository estudanteRepository){
+
+    private EstudanteService(EstudanteRepository estudanteRepository) {
         this.estudanteRepository = estudanteRepository;
     }
-    
+
     public List<Estudante> getAll() {
         return estudanteRepository.findAll();
     }
@@ -34,5 +34,15 @@ public class EstudanteService {
     public void delete(Long id) {
         estudanteRepository.deleteById(id);
         return;
+    }
+
+    public Estudante editar(Long id, Estudante estudante) {
+        Optional<Estudante> estudanteDb = estudanteRepository.findById(id);
+
+        if (!estudanteDb.isEmpty()) {
+            estudante.setId(estudanteDb.get().getId());
+        }
+
+        return estudanteRepository.save(estudante);
     }
 }

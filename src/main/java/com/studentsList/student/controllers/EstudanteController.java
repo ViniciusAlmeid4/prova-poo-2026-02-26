@@ -42,4 +42,9 @@ public class EstudanteController {
         estudanteService.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping(path = "/{id}")
+    public Estudante editar(@PathVariable Long id, @RequestBody Estudante estudante) {
+        return estudanteService.editar(id, estudante);
+    }
 }
