@@ -1,5 +1,6 @@
 package com.studentsList.student.models;
 
+import com.studentsList.student.enums.EstudanteEnum;
 import jakarta.persistence.*;
 
 @Table(name = "tb_aluno")
@@ -13,6 +14,7 @@ public class Estudante {
     private String nome;
     private String email;
     private Integer idade;
+    private EstudanteEnum status;
 
     public Estudante() {
     }
@@ -47,5 +49,13 @@ public class Estudante {
 
     public void setIdade(Integer idade) {
         this.idade = idade;
+    }
+
+    public EstudanteEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(EstudanteEnum status) {
+        this.status = status;
     }
 }
